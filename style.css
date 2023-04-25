@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;;
+    border: 0px;
+    margin: 0px;
+}
+
+body{
+    margin: 0rem 2rem 0rem 2rem;
+}
+
+.container{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-1-container, .video-2-container{
+    flex: 1 0 50%;
+    background-color: rgb(26, 25, 25); 
+    /* height: 35rem; */
+    /* max-height: 35rem; */
+}
+
+.video-1, .video-2{
+    object-fit: contain;
+    width: 100%;
+}
