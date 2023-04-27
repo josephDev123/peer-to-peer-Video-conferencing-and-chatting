@@ -2,17 +2,16 @@ const videoElem_1 =  document.getElementById('video-1');
 const videoElem_2 =  document.getElementById('video-2');
 
 let peerConnection;
-let peer_1Stream;
+let peer_1_Stream;
 let remoteStream;
 const APP_ID ='3eb5ac05c86c421d8264681b474261d1'
 
  let client;
+ let channel;
 const Agora_option = {
     uid: Math.floor(Math.random() * 100000).toString(),
     token: ''
 }
-
-
 
 const constraints = {
     video:{
@@ -29,57 +28,48 @@ const stun_servers = {
 
 
 
-async function signalingServer(){
+
+async function  init(){
     client = await AgoraRTM.createInstance(APP_ID)
     await client.login(Agora_option);
-    channel =  client.createChannel('main')
-    channel.join();
+    channel =  await client.createChannel('main')
+    await channel.join();
 
-    client.on('MemberJoined', HandleUserJoined)   
+    channel.on('MemberJoined', HandleUserJoined);
+    channel.on('MessageFromPeer', HandleMessageFromPeer);
+    channel.on('MemberLeft', HandleUserLeft);
+
+    peer_1_Stream = await navigator.mediaDevices.getUserMedia(constraints);
+    videoElem_1.srcObject = peer_1_Stream;
 }
+
 
 
 function HandleUserJoined(memberId){
-     console.log('User joined:', memberId)
-}
-
-
-
-
-async function  init(){
-    await signalingServer()
+    console.log('User joined:', memberId);
     peerConnection = new RTCPeerConnection();
 
-    peer_1Stream = await navigator.mediaDevices.getUserMedia(constraints)
-    peer_1Stream.getTracks().forEach(track => {
-        // console.log(track)
-        peerConnection.addTrack(track)
-    })
+    peer_1_Stream.getTracks.forEach(track =>{
+        peerConnection.addTracks(track, peer_1_Stream);
+    });
 
-    peerConnection.ontrack = (event)=>{
-        console.log(event)
-        remoteStream.addTrack(event.streams[0])
-    }
-
-    remoteStream = new MediaStream()
-    // console.log(remoteStream)
-    videoElem_2.srcObject = remoteStream;
-    videoElem_1.srcObject = peer_1Stream;
-
-    peerConnection.onicecandidate = async (event)=>{
-        if(event.candidate){
-             client.sendMessageToPeer({text: JSON.stringify({'type': 'candidate', 'candidate': event.candidate}) })
-        }  
-    }
-
-    
     const offer = peerConnection.createOffer();
-    peerConnection.setLocalDescription(offer)
-      
-      client.sendMessageToPeer({text:JSON.stringify({'type':'offer',  'offer': offer})})
-    
+    peerConnection.setLocalDescription(offer);
+
+    remoteStream = new MediaStream();
+
+    client.sendMessageToPeer({text:JSON.stringify({'type':offer, 'offer':offer}), memberId});
 }
 
+
+
+function HandleUserLeft(memberId){
+    console.log('User left:', memberId);
+}
+
+function HandleMessageFromPeer(memberId){
+    console.log('MESSAGE FROM PEER:', memberId);
+}
 
 
 
