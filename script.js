@@ -4,7 +4,7 @@ const videoElem_2 =  document.getElementById('video-2');
 let peerConnection;
 let peer_1_Stream;
 let remoteStream;
-const APP_ID ='3eb5ac05c86c421d8264681b474261d1'
+const APP_ID ='1fb8d98f2e7145c698548a1f7487c2f9'
 
  let client;
  let channel;
@@ -44,15 +44,26 @@ async function  init(){
 }
 
 
-
-function HandleUserJoined(memberId){
-    console.log('User joined:', memberId);
+const setPeerConnection = (memberId)=>{
     peerConnection = new RTCPeerConnection();
 
     peer_1_Stream.getTracks.forEach(track =>{
         peerConnection.addTracks(track, peer_1_Stream);
     });
 
+    peerConnection.onicecandidate=(event)=>{
+        if(event.candidate){
+            client.sendMessageToPeer({text:JSON.stringify({'type':candidate, 'candidate':event.candidate}, memberId)});
+        }
+
+    }
+
+}
+
+
+function HandleUserJoined(memberId){
+    console.log('User joined:', memberId);
+    setPeerConnection(memberId)
     const offer = peerConnection.createOffer();
     peerConnection.setLocalDescription(offer);
 
@@ -67,10 +78,30 @@ function HandleUserLeft(memberId){
     console.log('User left:', memberId);
 }
 
-function HandleMessageFromPeer(memberId){
-    console.log('MESSAGE FROM PEER:', memberId);
+function HandleMessageFromPeer(message, memberId){
+    console.log('message from peer: ',message, memberId)
+    
+    if (message.type === offer) {
+        createAnswer(message.offer, memberId);
+    }
+
+    if (message.type === candidate) {
+        
+    }
+
+    if (message.type === offer) {
+        
+    }
 }
 
 
+
+function createAnswer(offer, memberId){
+    const answer = peerConnection.createAnswer()
+    peerConnection.setLocalDescription(answer)
+
+    peerConnection.setRemoteDescription(offer)
+    client.sendMessageToPeer({text:JSON.stringify({'type':'answer', 'answer':answer}), memberId})
+}
 
 init()
