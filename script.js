@@ -10,10 +10,13 @@ const APP_ID ='3eb5ac05c86c421d8264681b474261d1'
 
  let client;
  let channel;
-const Agora_option = {
-    uid: Math.floor(Math.random() * 100000).toString(),
-    token: ''
-}
+// const Agora_option = {
+//     uid: Math.floor(Math.random() * 100000).toString(),
+//     token: ''
+// }
+
+const uid = Math.floor(Math.random() * 100000).toString()
+
 
 const constraints = {
     video:{
@@ -32,10 +35,10 @@ const stun_servers = {
 
 
 async function  init(){
-    
-    client =  AgoraRTM.createInstance(APP_ID)
-    await client.login(Agora_option);
-    channel =  await client.createChannel('main')
+
+    client =  await AgoraRTM.createInstance(APP_ID)
+    await client.login({uid});
+    channel =   client.createChannel('main')
     await channel.join();
 
     channel.on('MemberJoined', HandleUserJoined);
@@ -49,19 +52,22 @@ async function  init(){
 
 const setPeerConnection = async (memberId)=>{
     peerConnection = new RTCPeerConnection();
+    remoteStream = new MediaStream();
 
     if(!peer_1_Stream){
         peer_1_Stream = await navigator.mediaDevices.getUserMedia(constraints);
         videoElem_1.srcObject = peer_1_Stream;
     }
+    
 
     peer_1_Stream.getTracks().forEach(track =>{
         peerConnection.addTrack(track, peer_1_Stream);
     });
 
-    remoteStream = new MediaStream();
+   
     peerConnection.ontrack = (event)=>{
-        videoElem_2.srcObject = event.remoteStream[0];
+        event.streams[0].getTracks().forEach(track => remoteStream.addTrack(track))
+        
     }
 
     peerConnection.onicecandidate=(event)=>{
@@ -94,13 +100,17 @@ function HandleUserLeft(memberId){
 function HandleMessageFromPeer(message, memberId){
     console.log('message from peer: ',message, memberId)
     const msg = JSON.parse(message.text);
+    console.log(msg)
 
     if (msg.type === 'offer') {
         createAnswer(msg.offer, memberId);
     }
 
     if (msg.type === 'candidate') {
-        client.sendMessageToPeer({text:JSON.stringify({'type':'candidate', 'answer':msg.candidate}), memberId})
+        if(peerConnection){
+            peerConnection.addIceCandidate(msg.candidate)
+        }
+        // client.sendMessageToPeer({text:JSON.stringify({'type':'candidate', 'answer':msg.candidate}), memberId})
     }
 
     if (msg.type === 'answer') {
@@ -111,7 +121,8 @@ function HandleMessageFromPeer(message, memberId){
 
 
 async function createAnswer(offer, memberId){
-    const answer = peerConnection.createAnswer()
+    setPeerConnection(memberId)
+    const answer = await peerConnection.createAnswer()
     await peerConnection.setLocalDescription(answer)
 
     await peerConnection.setRemoteDescription(offer)
