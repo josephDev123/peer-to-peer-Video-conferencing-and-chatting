@@ -22,7 +22,7 @@ body{
     /* max-height: 35rem; */
 }
 
-.video-1, .video-2{
+.video_one, .video_two{
     object-fit: contain;
     width: 100%;
 }

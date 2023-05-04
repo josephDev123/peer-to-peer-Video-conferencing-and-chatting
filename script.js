@@ -1,18 +1,14 @@
 
-const videoElem_1 =  document.getElementById('video-1');
-const videoElem_2 =  document.getElementById('video-2');
+const videoElem_1 =  document.getElementById('video_one');
+const videoElem_2 =  document.getElementById('video_two');
 
 let peerConnection;
-let peer_1_Stream;
+let localStream;
 let remoteStream;
 const APP_ID ='3eb5ac05c86c421d8264681b474261d1'
 
  let client;
  let channel;
-// const Agora_option = {
-//     uid: Math.floor(Math.random() * 100000).toString(),
-//     token: ''
-// }
 
 const uid = String(Math.floor(Math.random() * 100000))
 const token =null
@@ -39,12 +35,11 @@ async function init(){
     await channel.join();
 
     channel.on('MemberJoined', HandleUserJoined);
-    channel.on('MessageFromPeer', HandleMessageFromPeer);
     channel.on('MemberLeft', HandleUserLeft);
+    channel.on('MessageFromPeer', HandleMessageFromPeer);
 
-    peer_1_Stream = await navigator.mediaDevices.getUserMedia(constraints);
-    videoElem_1.srcObject =  peer_1_Stream;
-   
+    localStream = await navigator.mediaDevices.getUserMedia(constraints);
+    videoElem_1.srcObject=localStream;
 }
 
 function HandleUserLeft(memberId){
@@ -54,11 +49,15 @@ function HandleUserLeft(memberId){
 
 async function HandleMessageFromPeer(message, memberId){
     console.log('message from peer: ', message, memberId)
-    const msg = JSON.parse(message.text);
+     msg = JSON.parse(message.text);
     // console.log(msg)
 
     if (msg.type === 'offer') {
         createAnswer(msg.offer, memberId);
+    }
+
+    if (msg.type === 'answer') {
+        addAnswer(msg.answer);
     }
 
     if (msg.type === 'candidate') {
@@ -67,9 +66,7 @@ async function HandleMessageFromPeer(message, memberId){
         }
     }
 
-    if (msg.type === 'answer') {
-        addAnswer(msg.answer);
-    }
+   
 }
 
 async function HandleUserJoined(memberId){
@@ -79,19 +76,19 @@ async function HandleUserJoined(memberId){
  
 
 
-const setPeerConnection = async (memberId)=>{
+const createPeerConnection = async (memberId)=>{
     peerConnection = new RTCPeerConnection(servers);
     remoteStream = new MediaStream();
     videoElem_2.srcObject = remoteStream
 
-    if(!peer_1_Stream){
-        peer_1_Stream = await navigator.mediaDevices.getUserMedia(constraints);
-        videoElem_1.srcObject = peer_1_Stream;
+    if(!localStream){
+        localStream = await navigator.mediaDevices.getUserMedia(constraints);
+        videoElem_1.srcObject = localStream;
     }
     
 
-    peer_1_Stream.getTracks().forEach(track=>{
-        peerConnection.addTrack(track, peer_1_Stream);
+    localStream.getTracks().forEach(track=>{
+        peerConnection.addTrack(track, localStream);
     });
 
    
@@ -111,7 +108,7 @@ const setPeerConnection = async (memberId)=>{
 }
 
 async function createOffer(memberId){
-    await setPeerConnection(memberId)
+    await createPeerConnection(memberId)
     const offer = await peerConnection.createOffer();
     await peerConnection.setLocalDescription(offer);
 
@@ -119,7 +116,7 @@ async function createOffer(memberId){
 }
 
 async function createAnswer(offer, memberId){
-    await setPeerConnection(memberId)
+    await createPeerConnection(memberId)
     await peerConnection.setRemoteDescription(offer)
 
     const answer = await peerConnection.createAnswer()
