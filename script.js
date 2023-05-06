@@ -15,7 +15,7 @@ const token =null
 
 const constraints = {
     video:true, 
-    audio: false
+    audio: true
 }
 
 const servers = {
@@ -36,8 +36,8 @@ async function init(){
 
     channel.on('MemberJoined', HandleUserJoined);
     channel.on('MemberLeft', HandleUserLeft);
-    channel.on('MessageFromPeer', HandleMessageFromPeer);
-
+    client.on('MessageFromPeer', HandleMessageFromPeer);
+    
     localStream = await navigator.mediaDevices.getUserMedia(constraints);
     videoElem_1.srcObject=localStream;
 }
@@ -47,21 +47,24 @@ function HandleUserLeft(memberId){
 }
 
 
-async function HandleMessageFromPeer(message, memberId){
+ function HandleMessageFromPeer(message, memberId){
     console.log('message from peer: ', message, memberId)
      msg = JSON.parse(message.text);
     // console.log(msg)
 
     if (msg.type === 'offer') {
+        console.log('offer',msg.offer)
         createAnswer(msg.offer, memberId);
     }
 
     if (msg.type === 'answer') {
+        console.log('anwser',msg.answer)
         addAnswer(msg.answer);
     }
 
     if (msg.type === 'candidate') {
         if(peerConnection){
+            console.log('candidate',msg.candidate)
             peerConnection.addIceCandidate(msg.candidate)
         }
     }
@@ -93,6 +96,7 @@ const createPeerConnection = async (memberId)=>{
 
    
     peerConnection.ontrack = (event)=>{
+        console.log('stream', memberId)
         event.streams[0].getTracks().forEach((track) => {
             remoteStream.addTrack(track)
     })
@@ -108,8 +112,10 @@ const createPeerConnection = async (memberId)=>{
 }
 
 async function createOffer(memberId){
+    
     await createPeerConnection(memberId)
     const offer = await peerConnection.createOffer();
+    console.log('create offer', offer)
     await peerConnection.setLocalDescription(offer);
 
     client.sendMessageToPeer({text:JSON.stringify({'type':'offer', 'offer':offer})}, memberId)
@@ -121,7 +127,7 @@ async function createAnswer(offer, memberId){
 
     const answer = await peerConnection.createAnswer()
     await peerConnection.setLocalDescription(answer)
-
+    console.log('create answer', answer)
     client.sendMessageToPeer({text:JSON.stringify({'type':'answer', 'answer':answer})}, memberId)
 }
 
