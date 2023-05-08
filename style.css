@@ -4,25 +4,50 @@
     margin: 0px;
 }
 
+html{
+    font-size: 1rem;
+}
+
 body{
     margin: 0rem 2rem 0rem 2rem;
 }
 
-.container{
+header{
     display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.7rem;
+    font-size: 0.8rem;
+    align-items: baseline;
 }
 
-.video-1-container, .video-2-container{
-    flex: 1 0 50%;
-    background-color: rgb(26, 25, 25); 
-    /* height: 35rem; */
-    /* max-height: 35rem; */
+header ul{
+    list-style: none;
+    display: flex;
+    gap: 0.7rem;
+    background-color: none;
 }
 
-.video_one, .video_two{
-    object-fit: contain;
-    width: 100%;
+header .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.7rem;
+    
+}
+
+.title span:nth-child(2){
+    background-color: #D0D3E3;
+    border-radius: 0.5rem;
+    padding: 0.4rem;
+    font-size: 0.5rem;
+}
+
+.title .people {
+    align-self: baseline;
+    width: 0.6rem;
+}
+
+
+ul li button{
+    background-color: none;
 }
