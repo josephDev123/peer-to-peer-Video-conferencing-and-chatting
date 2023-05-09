@@ -18,6 +18,8 @@ header{
     margin-top: 0.7rem;
     font-size: 0.8rem;
     align-items: baseline;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 0.8rem;
 }
 
 header ul{
@@ -38,16 +40,63 @@ header .title{
 .title span:nth-child(2){
     background-color: #D0D3E3;
     border-radius: 0.5rem;
-    padding: 0.4rem;
+    padding: 0.3rem;
     font-size: 0.5rem;
 }
 
 .title .people {
     align-self: baseline;
     width: 0.6rem;
+    font-size: 0.5rem;
 }
 
 
 ul li button{
-    background-color: none;
+    background-color: transparent;
+    font-size: 0.7rem;
+}
+
+ul li button:hover{
+  cursor: pointer;
+}
+
+
+
+.video_container{
+    display: flex;
+    justify-content: space-between;
+    width:80%;
+    margin:0.7rem auto 0 auto;
+    gap: 0.5rem
+}
+
+.videos, .message_wrapper{
+    flex: 1 1 50%;
+}
+
+.information{
+    display:flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    padding-bottom: 0.7rem;
+   
+}
+
+.information img{
+    height: 0.7rem;
+}
+
+.information span button:not(.btn-add-call){
+    background-color: #EDFAF8;
+    font-size: 0.7rem;
+    color: #21AF99;
+    border-radius: 0.5rem;
+}
+
+
+.information span button:nth-child(2){
+    background-color: #00A389;
+    font-size: 0.7rem;
+    color: #A8E0D7;
+    border-radius: 0.5rem;
 }
