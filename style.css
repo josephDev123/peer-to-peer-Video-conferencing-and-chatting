@@ -70,8 +70,12 @@ ul li button:hover{
     gap: 0.5rem
 }
 
-.videos, .message_wrapper{
-    flex: 1 1 50%;
+.videos{
+    flex: 1 1 70%;
+}
+
+.message_wrapper{
+    flex: 1 1 30%;
 }
 
 .information{
@@ -79,24 +83,41 @@ ul li button:hover{
     justify-content: space-between;
     font-size: 0.7rem;
     padding-bottom: 0.7rem;
-   
+    align-items: baseline;
 }
 
 .information img{
     height: 0.7rem;
 }
 
-.information span button:not(.btn-add-call){
+.information .invited_to_call_btn{
     background-color: #EDFAF8;
+    color: #21AF99;
+    border-radius: 0.5rem;
+}
+
+.information .plus_btn{
+    background-color: #00A389;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 0.5rem;
+    padding: 0.3rem
+    
+}
+.information .user_to_call_btn{
+    background-color: transparent;
     font-size: 0.7rem;
     color: #21AF99;
     border-radius: 0.5rem;
 }
 
 
-.information span button:nth-child(2){
-    background-color: #00A389;
+.add_to_call_action img{
     font-size: 0.7rem;
-    color: #A8E0D7;
     border-radius: 0.5rem;
 }
+
+.add_to_call_action button:hover{
+    cursor: pointer;
+}
+
