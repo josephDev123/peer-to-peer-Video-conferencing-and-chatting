@@ -64,7 +64,7 @@ function HandleUserLeft(memberId){
 
     if (msg.type === 'candidate') {
         if(peerConnection){
-            console.log('candidate',msg.candidate)
+            console.log('candidate', msg.candidate)
             peerConnection.addIceCandidate(msg.candidate)
         }
     }

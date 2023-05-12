@@ -121,3 +121,67 @@ ul li button:hover{
     cursor: pointer;
 }
 
+.stream_wrapper{
+    position: relative;
+    width: 100%;
+}
+
+.stream_wrapper img{
+    border-radius: 0.5rem;
+}
+
+.localStream-bigThumbnail{
+    border-radius: 0.5rem;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.remoteStream-smallThumbnail{
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    border-radius: 0.5rem;
+    max-height: 5rem;
+    max-width: 5rem;
+}
+
+.cto-btn{
+    display: flex;
+    gap: 0.8rem;
+    position: absolute;
+    /* top: 0.4rem; */
+    bottom: 1rem;
+    left: calc(100% - 60%);
+    right: calc(100% - 60%);
+}
+
+.btn{
+    background-color: rgb(14, 124, 14);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 100%;
+    max-width: 2rem;
+    max-height: 2rem;
+    border: 0.2px solid transparent;
+}
+
+.btn:hover{
+    border: 0.2px solid rgb(226, 226, 226);
+    cursor: pointer;
+}
+
+
+.btn:nth-child(2){
+    background-color: rgb(248, 69, 69);
+    
+}
+
+
+.cto-btn .btn img{
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+  
+}
+
