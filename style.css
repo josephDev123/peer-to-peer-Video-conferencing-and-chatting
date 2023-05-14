@@ -65,8 +65,8 @@ ul li button:hover{
 .video_container{
     display: flex;
     justify-content: space-between;
-    width:80%;
-    margin:0.7rem auto 0 auto;
+    /* width:100%; */
+    /* margin:0.7rem auto 0 auto; */
     gap: 0.5rem
 }
 
@@ -84,6 +84,7 @@ ul li button:hover{
     font-size: 0.7rem;
     padding-bottom: 0.7rem;
     align-items: baseline;
+    padding-top: 0.5rem
 }
 
 .information img{
@@ -151,9 +152,9 @@ ul li button:hover{
     gap: 0.8rem;
     position: absolute;
     /* top: 0.4rem; */
-    bottom: 1rem;
-    left: calc(100% - 60%);
-    right: calc(100% - 60%);
+    bottom: 0.8rem;
+    left: 40%;
+    right: 40%;
 }
 
 .btn{
@@ -185,3 +186,12 @@ ul li button:hover{
   
 }
 
+/* //message section */
+
+.message_wrapper{
+    background-color: #EDF0F5;
+    height: 80vh;
+    overflow: auto;
+    text-align: center;
+    padding-top: 1rem;
+}
