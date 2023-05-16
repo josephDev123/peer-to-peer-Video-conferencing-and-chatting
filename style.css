@@ -131,14 +131,14 @@ ul li button:hover{
     border-radius: 0.5rem;
 }
 
-.localStream-bigThumbnail{
+.remoteStream-bigThumbnail{
     border-radius: 0.5rem;
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
-
-.remoteStream-smallThumbnail{
+ 
+.localStream-smallThumbnail{
     position: absolute;
     top: 0.4rem;
     right: 0.4rem;
@@ -151,7 +151,7 @@ ul li button:hover{
     display: flex;
     gap: 0.8rem;
     position: absolute;
-    /* top: 0.4rem; */
+    top: 20.4rem;
     bottom: 0.8rem;
     left: 40%;
     right: 40%;
@@ -172,12 +172,10 @@ ul li button:hover{
     cursor: pointer;
 }
 
-
 .btn:nth-child(2){
     background-color: rgb(248, 69, 69);
     
 }
-
 
 .cto-btn .btn img{
     width: 1rem;
@@ -187,7 +185,6 @@ ul li button:hover{
 }
 
 /* //message section */
-
 .message_wrapper{
     background-color: #EDF0F5;
     height: 80vh;
