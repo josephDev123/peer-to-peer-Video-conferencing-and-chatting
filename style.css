@@ -122,12 +122,12 @@ ul li button:hover{
     cursor: pointer;
 }
 
-.stream_wrapper{
+.streams_wrapper{
     position: relative;
-    width: 100%;
+    /* width: 100%; */
 }
 
-.stream_wrapper img{
+.streams_wrapper img{
     border-radius: 0.5rem;
 }
 
