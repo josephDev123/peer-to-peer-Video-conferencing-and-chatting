@@ -110,7 +110,7 @@ const createPeerConnection = async (memberId)=>{
             remoteStream.addTrack(track)
             
     })
-    // videoElem_1.removeAttribute('class', 'localStream-bigThumbnail')    
+    videoElem_2.style.display ='block'   
     videoElem_2.setAttribute('class', 'remoteStream-bigThumbnail');
     videoElem_1.setAttribute('class', 'localStream-smallThumbnail') 
     }
