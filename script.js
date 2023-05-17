@@ -45,6 +45,7 @@ async function init(){
     client.on('MessageFromPeer', HandleMessageFromPeer);
     
     localStream = await navigator.mediaDevices.getUserMedia(constraints);
+    videoElem_2.style.display ='none'
     videoElem_1.setAttribute('class', 'remoteStream-bigThumbnail');
     videoElem_1.srcObject=localStream;
     loading.innerHTML = ''
