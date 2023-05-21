@@ -134,7 +134,7 @@ ul li button:hover{
 
 .remoteStream-bigThumbnail{
     border-radius: 0.5rem;
-    height: 80%;
+    height: 100vh;
     width: 100%;
     object-fit: cover;
 }
