@@ -34,7 +34,7 @@ const servers = {
 loading.innerHTML =`<div>Loading ..... </div>`
 
 async function init(){
-
+try {
     client =  await AgoraRTM.createInstance(APP_ID);
     await client.login({uid, token});
     channel = client.createChannel('main')
@@ -49,6 +49,10 @@ async function init(){
     videoElem_1.setAttribute('class', 'remoteStream-bigThumbnail');
     videoElem_1.srcObject=localStream;
     loading.innerHTML = ''
+} catch (error) {
+    alert('error occur :'+ error.message+'\n'+ 'refresh browser')
+}
+  
 }
 
 function HandleUserLeft(memberId){
