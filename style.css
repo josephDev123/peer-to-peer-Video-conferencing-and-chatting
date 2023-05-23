@@ -8,9 +8,9 @@ html{
     font-size: 1.5rem;
 }
 
-body{
+/* body{
     margin: 0rem 2rem 0rem 2rem;
-}
+} */
 
 header{
     display: flex;
@@ -21,6 +21,7 @@ header{
     border-bottom: 1px solid #E5E7EB;
     padding-bottom: 0.8rem;
     flex-wrap: wrap;
+    margin: 0rem 2rem 0rem 2rem;
 }
 
 header ul{
@@ -66,8 +67,8 @@ ul li button:hover{
 .video_container{
     display: flex;
     justify-content: space-between;
-    /* width:100%; */
-    /* margin:0.7rem auto 0 auto; */
+    width:90%;
+    margin:0.7rem auto 0 auto;
     gap: 0.5rem
 }
 
@@ -221,8 +222,6 @@ ul li button:hover{
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100vw;
-        margin: 0 auto;
         gap: 0.5rem;
     }
 
