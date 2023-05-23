@@ -18,8 +18,11 @@ const uid = String(Math.floor(Math.random() * 100000))
 const token =null
 
 const constraints = {
-    video:true, 
-    audio: true
+    audio: true,
+    video: {
+        width: { min: 1280 },
+        height: { min: 720 },
+      }
 }
 
 const servers = {
