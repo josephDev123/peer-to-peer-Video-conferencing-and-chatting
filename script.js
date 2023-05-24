@@ -5,7 +5,7 @@ const streams_wrapper =  document.getElementById('streams_wrapper');
 const loading =  document.getElementById('loading');
 const muteBtn = document.getElementById('mute');
 const endBtn = document.getElementById('endCall');
-const disableCameraBtn = document.getElementById('stopCamera')
+const endCameraBtn = document.getElementById('stopCamera')
 
 let peerConnection;
 let localStream;
@@ -164,11 +164,36 @@ async function addAnswer(answer){
     }
 }
 
-function muteAudio(){
+async function muteAudio(){
+   
+   const audioTrack = await localStream.getAudioTracks()[0]
+    if(audioTrack.kind === 'audio' && audioTrack.enabled === true){
+        console.log('muted')
+        audioTrack.enabled =false
+    }else{
+        console.log('unmuted')
+        audioTrack.enabled =true 
+    }
 
 }
 
 
+async function muteCamera(){
+   
+    const videoTrack = await localStream.getVideoTracks()[0]
+     console.log(videoTrack)
+     if(videoTrack.kind === 'video' && videoTrack.enabled === true){
+         console.log('close camera ')
+         videoTrack.enabled =false
+     }else{
+         console.log('open camera')
+         videoTrack.enabled =true 
+     }
+ 
+ }
+
+muteBtn.addEventListener('click', muteAudio)
+endCameraBtn.addEventListener('click', muteCamera)
 init()
 
 
