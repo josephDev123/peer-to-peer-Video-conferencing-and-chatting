@@ -22,10 +22,7 @@ const token =null
 
 const constraints = {
     audio: true,
-    video: {
-        width: { min: 1280 },
-        height: { min: 720 },
-      }
+    video: { width: 1280, height: 720 },
 }
 
 const servers = {
@@ -56,6 +53,11 @@ try {
     videoElem_1.srcObject=localStream;
     loading.innerHTML = ''
 } catch (error) {
+    localStream = await navigator.mediaDevices.getUserMedia(constraints);
+    videoElem_2.style.display ='none'
+    videoElem_1.setAttribute('class', 'remoteStream-bigThumbnail');
+    videoElem_1.srcObject=localStream;
+    loading.innerHTML = ''
     alert('error occur :'+ error.message+'\n'+ 'refresh browser')
 }
   
@@ -163,7 +165,7 @@ async function addAnswer(answer){
 }
 
 function muteAudio(){
-    
+
 }
 
 
