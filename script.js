@@ -5,7 +5,7 @@ const streams_wrapper =  document.getElementById('streams_wrapper');
 const loading =  document.getElementById('loading');
 const muteBtn = document.getElementById('mute');
 const endBtn = document.getElementById('endCall');
-const endCameraBtn = document.getElementById('stopCamera')
+const disableCameraBtn = document.getElementById('stopCamera')
 
 let peerConnection;
 let localStream;
@@ -191,7 +191,7 @@ async function disableCamera(){
  }
 
 muteBtn.addEventListener('click', muteAudio)
-endCameraBtn.addEventListener('click', disableCamera)
+disableCameraBtn.addEventListener('click', disableCamera)
 init()
 
 
