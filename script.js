@@ -178,10 +178,8 @@ async function muteAudio(){
 }
 
 
-async function muteCamera(){
-   
+async function disableCamera(){
     const videoTrack = await localStream.getVideoTracks()[0]
-     console.log(videoTrack)
      if(videoTrack.kind === 'video' && videoTrack.enabled === true){
          console.log('close camera ')
          videoTrack.enabled =false
@@ -193,7 +191,7 @@ async function muteCamera(){
  }
 
 muteBtn.addEventListener('click', muteAudio)
-endCameraBtn.addEventListener('click', muteCamera)
+endCameraBtn.addEventListener('click', disableCamera)
 init()
 
 
