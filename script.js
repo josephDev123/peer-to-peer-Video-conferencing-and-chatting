@@ -21,7 +21,7 @@ const uid = String(Math.floor(Math.random() * 100000))
 const token =null
 
 const constraints = {
-    audio: true,
+    audio: {echoCancellation: true, noiseSuppression: true},
     video: { width: 1280, height: 720 },
 }
 
