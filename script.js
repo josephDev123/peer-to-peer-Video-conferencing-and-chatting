@@ -23,7 +23,7 @@ const token =null
 
 const constraints = {
     audio: true,
-    video: { width: 1280, height: 720 },
+    video: true
 }
 
 const servers = {
