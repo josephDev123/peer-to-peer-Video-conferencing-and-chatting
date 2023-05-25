@@ -19,9 +19,10 @@ const APP_ID ='3eb5ac05c86c421d8264681b474261d1'
 
 const uid = String(Math.floor(Math.random() * 100000))
 const token =null
+// {echoCancellation: true, noiseSuppression: true}
 
 const constraints = {
-    audio: {echoCancellation: true, noiseSuppression: true},
+    audio: true,
     video: { width: 1280, height: 720 },
 }
 
