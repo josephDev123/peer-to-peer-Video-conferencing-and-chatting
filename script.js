@@ -39,14 +39,14 @@ loading.innerHTML =`<div>Loading ..... </div>`
 
 async function init(){
 try {
-    // client =  await AgoraRTM.createInstance(APP_ID);
-    // await client.login({uid, token});
-    // channel = client.createChannel('main')
-    // await channel.join();
+    client =  await AgoraRTM.createInstance(APP_ID);
+    await client.login({uid, token});
+    channel = client.createChannel('main')
+    await channel.join();
 
-    // channel.on('MemberJoined', HandleUserJoined);
-    // channel.on('MemberLeft', HandleUserLeft);
-    // client.on('MessageFromPeer', HandleMessageFromPeer);
+    channel.on('MemberJoined', HandleUserJoined);
+    channel.on('MemberLeft', HandleUserLeft);
+    client.on('MessageFromPeer', HandleMessageFromPeer);
     
     localStream = await navigator.mediaDevices.getUserMedia(constraints);
     videoElem_2.style.display ='none'
