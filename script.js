@@ -6,6 +6,7 @@ const loading =  document.getElementById('loading');
 const muteBtn = document.getElementById('mute');
 const endBtn = document.getElementById('endCall');
 const disableCameraBtn = document.getElementById('stopCamera')
+const cto_btn = document.getElementById('cto-btn')
 
 let peerConnection;
 let localStream;
@@ -38,18 +39,20 @@ loading.innerHTML =`<div>Loading ..... </div>`
 
 async function init(){
 try {
-    client =  await AgoraRTM.createInstance(APP_ID);
-    await client.login({uid, token});
-    channel = client.createChannel('main')
-    await channel.join();
+    // client =  await AgoraRTM.createInstance(APP_ID);
+    // await client.login({uid, token});
+    // channel = client.createChannel('main')
+    // await channel.join();
 
-    channel.on('MemberJoined', HandleUserJoined);
-    channel.on('MemberLeft', HandleUserLeft);
-    client.on('MessageFromPeer', HandleMessageFromPeer);
+    // channel.on('MemberJoined', HandleUserJoined);
+    // channel.on('MemberLeft', HandleUserLeft);
+    // client.on('MessageFromPeer', HandleMessageFromPeer);
     
     localStream = await navigator.mediaDevices.getUserMedia(constraints);
     videoElem_2.style.display ='none'
     videoElem_1.setAttribute('class', 'remoteStream-bigThumbnail');
+    cto_btn.classList.remove('visibility-hidden');
+    // cto_btn.classList.add('visibility-show');
     videoElem_1.srcObject=localStream;
     loading.innerHTML = ''
 } catch (error) {

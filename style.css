@@ -159,8 +159,16 @@ ul li button:hover{
     bottom: 2.5rem;
 }
 
+.visibility-show{
+    visibility: visible;
+}
+
+.visibility-hidden{
+    visibility: hidden;
+}
+
 .btn{
-    background-color: rgb(14, 124, 14);
+    background-color: #5C6467;
     color: white;
     padding: 0.5rem;
     border-radius: 100%;
@@ -195,6 +203,15 @@ ul li button:hover{
     padding-top: 1rem;
 }
 
+.owner{
+    background:#00A389;
+     padding: 0.4rem;
+     border-top-right-radius: 0.5rem;
+     border-bottom-left-radius: 0.5rem;
+     color: #FFFFFF;
+     font-size: 0.8rem;
+}
+
 footer{
     margin: 0 auto 0 auto;
     width: 90%;
@@ -206,6 +223,8 @@ footer{
 footer p:nth-child(2) a{
    color: inherit;
 }
+
+
 
 
 
