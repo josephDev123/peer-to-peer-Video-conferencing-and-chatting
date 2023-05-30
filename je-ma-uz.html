@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Video chat || Chatting </title>
+</head>
+<body>
+        <header>
+            <!-- <span><img src="./images/logo.jpeg" alt="" width="25px" height="25px"/></span> -->
+            <a href="" class="logo"><i class="fa-solid fa-video"></i></a>
+            <div class="title">
+                <span>Room 1 </span>
+                <span><img src="./images/icons-people.png" alt="" class="people" /> Room-name</span>
+            </div>
+            <ul>
+                <li><button>Group chat</button> </li>
+                <li><button>Message</button>  </li> 
+                <li><button>participants</button> </li>
+            </ul>
+        </header>
+
+        <section class="video_container">
+            <div class="videos">
+                <div class='information'>
+                    <span>
+                        <img src="images/icons-group-people.png" alt=""/>  
+                        Invited to call 
+                        <button class='invited_to_call_btn'>6</button>
+                    </span>
+                    <span class="add_to_call_action">
+                        <img class='plus_btn' src="images/icons-plus.svg" alt=""/> 
+                        <button class='user_to_call_btn'> Add user to the call </button>
+                    </span>
+                </div>
+                <div class="streams_wrapper" id="streams_wrapper">
+                    <span class="loading" id="loading"></span>
+                    <!-- <img src="images/conferencing-person1.jpeg" class='bigThumbnail' width="100%" height="100%" alt=""/>
+                    <img src="images/person-conferencing2.jpeg" class='remoteStream-smallThumbnail' alt=""/> -->
+                   <video class='localStream' id="localStream" playinline  autoplay></video>
+                   <video class='remoteStream' id="remoteStream" playinline autoplay></video> 
+
+                    <div class="cto-btn visibility-hidden" id="cto-btn">
+                        <button class="btn" id="mute"><i class="fa-solid fa-volume-xmark"></i></button>
+                        <button class="btn" id="endCall"><i class="fa-solid fa-phone"></i></button>
+                        <button class="btn" id="stopCamera"><i class="fa-solid fa-camera"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="message_wrapper">
+                <h4 style="margin-bottom: 0.5rem">Group Chat</h4>
+                <img src="images/coming-soon1.png" width="100%" alt=""/>
+            </div>
+        </section>
+        <!-- style="color:inherit" -->
+        <footer>
+            <p>
+                <span class='owner'>Developed by :</span>
+                <a href='https://github.com/josephDev123' target="_blank">
+                    <img src="./images/avatar.jpg" alt="" width="20rem" height="20rem" style="border-radius: 5rem;"/>
+                </a>
+            </p>
+
+            <p> 
+                <a href='https://www.linkedin.com/in/joseph-uzuegbu/' target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </p>
+            <!-- <p> <a href='#'><i class="fa-brands fa-linkedin"></i></a></p> -->
+        </footer>
+    
+     <script src="agora-rtm-sdk-1.5.1.js"></script>
+    <script src="./script.js"></script> 
+    
+   
+</body>
+
+</html>
