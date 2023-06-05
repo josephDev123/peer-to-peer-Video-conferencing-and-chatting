@@ -8,9 +8,26 @@ html{
     font-size: 1.5rem;
 }
 
-/* body{
-    margin: 0rem 2rem 0rem 2rem;
-} */
+
+/* landing page css */
+
+.main_content_container{
+   margin: 0 auto 0 auto;
+   width: 80%;
+   margin-top: 2rem;
+}
+
+.content  h1{
+    font-size: 3rem;
+    /* font-weight: bolder; */
+    margin-top: 1.2rem;
+}
+
+.content h1 img{
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
 header{
     display: flex;
