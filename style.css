@@ -13,14 +13,14 @@ html{
 
 .main_content_container{
    margin: 0 auto 0 auto;
-   width: 80%;
+   width: 90%;
    margin-top: 2rem;
 }
 
 .content  h1{
     font-size: 3rem;
     /* font-weight: bolder; */
-    margin-top: 1.2rem;
+    margin-top: 1rem;
 }
 
 .content h1 img{
@@ -34,11 +34,12 @@ html{
     justify-content: space-between;
     flex-wrap: wrap;
     /* border: 1px solid red; */
+    border-bottom: 1px solid #5c2780;
 }
 
 .image_wrapper {
     /* border: 1px solid blue; */
-    /* border-radius: 100%; */
+    border-radius: 100%;
 }
 
 .content{
@@ -58,6 +59,66 @@ html{
     border-radius: 100%;
    
 }
+
+.join-meeting input{
+   color: #efebf1;
+    padding: 0.8rem;
+    background-color: #735687;
+    border-radius: 0.5rem;
+}
+
+.join-meeting input::placeholder{
+    color: #efebf1;
+ }
+ 
+ .join-meeting input:focus{
+    outline: #806a8f;
+ }
+
+button{
+    color: #efebf1;
+     padding: 0.8rem;
+     background-color: #5c2780;
+     border-radius: 0.5rem;
+ }
+
+ button:hover{
+    cursor: pointer;
+     background-color: #4b166e;
+ }
+
+ .new-meeting-section{
+    width: 90%;
+    margin: 0.5rem auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap
+ }
+
+ .chat-message-pic-wrapper,  .new-meeting-section{
+    flex: 1 0 50%;
+ }  
+
+ .new-meeting-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+ }
+
+ .new-meeting-form input{
+    padding: 0.8rem;
+ }
+
+ .chat-message-pic{
+    object-fit: contain;
+    object-position: center;
+
+ }
+
+
+
+
+
 
 /* start of video page */
 
