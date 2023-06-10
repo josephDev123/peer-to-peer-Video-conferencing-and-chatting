@@ -37,10 +37,13 @@
 
         <section class="new-meeting-section">
             <div class="new-meeting-form-wrapper">
-                <form class="new-meeting-form">
-                    <input type="text" placeholder="Title of the meeting"/>
-                    <input type="text" placeholder="Name of room" />
+                <form class="new-meeting-form" id="new-meeting-form">
+                    <input type="text" placeholder="Title of the meeting" name='meeting-title'/>
+                    <input type="text" placeholder="Name of room" name="room-name" />
+                   <span>
                     <button>Create new room</button>
+                     <button type="button" id="shareLinkBtn">share link</button>
+                </span> 
                 </form>
             </div>
             

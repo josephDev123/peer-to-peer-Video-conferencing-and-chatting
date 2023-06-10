@@ -1,0 +1,272 @@
+*{
+    box-sizing: border-box;;
+    border: 0px;
+    margin: 0px;
+}
+
+/* start of video page */
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    align-items: baseline;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 0.8rem;
+    flex-wrap: wrap;
+    margin: 1rem 2rem 0rem 2rem;
+
+}
+
+.logo{
+    color: #00A389;
+}
+
+header ul{
+    list-style: none;
+    display: flex;
+    gap: 0.7rem;
+    background-color: none;
+}
+
+header .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.7rem;
+    
+}
+
+.title span:nth-child(2){
+    background-color: #D0D3E3;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+    font-size: 0.5rem;
+}
+
+.title .people {
+    align-self: baseline;
+    width: 0.6rem;
+    font-size: 0.5rem;
+}
+
+
+ul li button{
+    background-color: transparent;
+    font-size: 0.7rem;
+}
+
+ul li button:hover{
+  cursor: pointer;
+}
+
+
+
+.video_container{
+    display: flex;
+    justify-content: space-between;
+    width:90%;
+    margin:0.7rem auto 0 auto;
+    gap: 0.5rem
+}
+
+.videos{
+    flex: 1 1 70%;
+}
+
+.message_wrapper{
+    flex: 1 1 30%;
+}
+
+.information{
+    display:flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    padding-bottom: 0.7rem;
+    align-items: baseline;
+    padding-top: 0.5rem
+}
+
+.information img{
+    height: 0.7rem;
+}
+
+.information .invited_to_call_btn{
+    background-color: #EDFAF8;
+    color: #21AF99;
+    border-radius: 0.5rem;
+}
+
+.information .plus_btn{
+    background-color: #00A389;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 0.5rem;
+    padding: 0.3rem
+    
+}
+.information .user_to_call_btn{
+    background-color: transparent;
+    font-size: 0.7rem;
+    color: #21AF99;
+    border-radius: 0.5rem;
+}
+
+
+.add_to_call_action img{
+    font-size: 0.7rem;
+    border-radius: 0.5rem;
+}
+
+.add_to_call_action button:hover{
+    cursor: pointer;
+}
+
+.streams_wrapper{
+    position: relative;
+     /* width: 100vw;  */
+}
+
+.streams_wrapper img{
+    border-radius: 0.5rem;
+}
+
+.remoteStream-bigThumbnail{
+    border-radius: 0.5rem;
+    height: 80vh;
+    width: 100%;
+    object-fit: cover;
+}
+ 
+.localStream-smallThumbnail{
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    border-radius: 0.5rem;
+    max-height: 5rem;
+    max-width: 5rem;
+}
+
+.cto-btn{
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    position: relative; 
+    bottom: 2.5rem;
+}
+
+.visibility-show{
+    visibility: visible;
+}
+
+.visibility-hidden{
+    visibility: hidden;
+}
+
+.btn{
+    background-color: #5C6467;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 100%;
+    max-width: 2rem;
+    max-height: 2rem;
+    border: 0.2px solid transparent;
+}
+
+.btn:hover{
+    border: 0.2px solid rgb(226, 226, 226);
+    cursor: pointer;
+}
+
+.btn:nth-child(2){
+    background-color: rgb(248, 69, 69);
+    
+}
+
+.cto-btn .btn img{
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+  
+}
+
+/* //message section */
+.message_wrapper{
+    background-color: #F8F7FC;
+    height: 80vh;
+    overflow: auto;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.owner{
+    background:#00A389;
+     padding: 0.4rem;
+     border-top-right-radius: 0.5rem;
+     border-bottom-left-radius: 0.5rem;
+     color: #FFFFFF;
+     font-size: 0.8rem;
+}
+
+footer{
+    margin: 0 auto 0 auto;
+    width: 90%;
+    display: flex;
+   gap: 0.5rem;
+   padding-bottom: 1rem;
+}
+
+footer p:nth-child(2) a{
+   color: inherit;
+}
+
+
+
+
+
+
+
+/* media query for video page */
+
+@media screen and (max-width: 425px) {
+
+    header ul{
+        display: none;
+    }
+
+    .btn{
+        max-width: 1.5rem;
+        max-height: 1.5rem;
+        border: 0.2px solid transparent;
+    }
+
+    .cto-btn .btn img{
+        width: 0.5rem;
+        height: 0.5rem;
+        object-fit: contain;
+      
+    }
+    
+    .video_container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .message_wrapper{
+        display: none;
+    }
+
+    .information{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+ 
+
+}
