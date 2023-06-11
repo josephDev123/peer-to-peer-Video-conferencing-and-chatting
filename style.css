@@ -85,12 +85,19 @@ header{
 .join-meeting input{
    color: #efebf1;
     padding: 0.8rem;
-    background-color: #735687;
+    /* background-color: #735687; */
     border-radius: 0.5rem;
+    border: 1px solid green;
 }
 
+
+.join-meeting input:focus{
+    border: 1px solid #1A73E8;
+ }
+
+
 .join-meeting input::placeholder{
-    color: #efebf1;
+    color: black;
  }
  
  .join-meeting input:focus{
