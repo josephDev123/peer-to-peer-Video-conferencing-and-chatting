@@ -10,7 +10,7 @@ const endBtn = document.getElementById('endCall');
 const disableCameraBtn = document.getElementById('stopCamera')
 const cto_btn = document.getElementById('cto-btn')
 const room_name = document.getElementById('room-name');
-const room_title = document.getAnimations('room-title')
+const room_title = document.getElementById('room-title')
 
 
 
@@ -42,6 +42,16 @@ const servers = {
 
 //loading state
 loading.innerHTML =`<div>Loading ..... </div>`
+
+// display the video title and name
+    const currentUrl = decodeURI(window.location.href);
+    const url = new URL(currentUrl);
+    const searchParams = new URLSearchParams(url.search);
+    const query = Object.fromEntries(searchParams.entries());
+    room_name.textContent = `${query?.room_name}`;
+    room_title.textContent = `${query?.room_title}`;
+
+
 
 async function init(){
 try {
@@ -198,6 +208,8 @@ async function disableCamera(){
      }
  
  }
+
+
 
 muteBtn.addEventListener('click', muteAudio)
 disableCameraBtn.addEventListener('click', disableCamera)
