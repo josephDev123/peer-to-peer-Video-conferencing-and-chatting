@@ -119,7 +119,7 @@ button{
     /* border: 1px solid red */
  }
 
- .chat-message-pic-wrapper, .new-meeting-form-wrapper{
+ .chat-message-pic-wrapper, .new-meeting-form{
     flex: 1 1 40%;
  }  
 
@@ -140,7 +140,7 @@ button{
     padding: 0.8rem;
     border: 1px solid gray;
     border-radius: 0.5rem;
-    /* width:40% */
+    width:100%
  }
 
 
@@ -195,10 +195,14 @@ button{
     .content{
         margin-bottom: 0.5rem;
     }
-}
 
-/* @media screen  and (max-width: 425px){
-    .join-meeting input{
+    .new-meeting-section{
+        display:flex;
+        flex-direction: column;
+    }
+
+    .new-meeting-form{
         margin-bottom: 0.5rem;
     }
-} */
+}
+

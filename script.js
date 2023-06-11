@@ -1,4 +1,6 @@
 
+
+
 const videoElem_1 =  document.getElementById('localStream');
 const videoElem_2 =  document.getElementById('remoteStream');
 const streams_wrapper =  document.getElementById('streams_wrapper');
@@ -7,6 +9,10 @@ const muteBtn = document.getElementById('mute');
 const endBtn = document.getElementById('endCall');
 const disableCameraBtn = document.getElementById('stopCamera')
 const cto_btn = document.getElementById('cto-btn')
+const room_name = document.getElementById('room-name');
+const room_title = document.getAnimations('room-title')
+
+
 
 let peerConnection;
 let localStream;

@@ -1,6 +1,7 @@
 const dateEl =  document.getElementById('date');
 const createNewRoomForm = document.getElementById('new-meeting-form')
-const shareLinkBtn = document.getElementById('shareLinkBtn')
+const shareLinkBtn = document.getElementById('shareLinkBtn');
+const joinMeetingForm = document.getElementById('join-meeting')
 
 // display data in the element
 const date = new Date().toDateString();
@@ -30,13 +31,21 @@ shareLinkBtn.onclick = (e)=>{
     if(!new_meeting_storage_data?.meeting_title && !new_meeting_storage_data?.room_name){
         alert('create a meeting before sharing link. try again');
     }else{
-        const currentUrl = `${window.location.href}?${new_meeting_storage_data?.meeting_title}&${new_meeting_storage_data?.room_name}`
+        const currentUrl = `je-ma-uz.html?${new_meeting_storage_data?.meeting_title}&${new_meeting_storage_data?.room_name}`
         copyLink(currentUrl)
      
     } 
 }
 
-
+joinMeetingForm.onsubmit = (e)=>{
+    e.preventDefault();
+    const link = joinMeetingForm.elements['meeting-link']
+    if(!link.value){
+        alert('cannot join the meeting because of invalid or empty link');
+    }else{
+        window.location.href=link.value
+    }
+}
 
 function copyLink(link) {
     navigator.clipboard.writeText(link)

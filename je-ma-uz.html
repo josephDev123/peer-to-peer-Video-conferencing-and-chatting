@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./je-ma-uz.css">
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./je-ma-uz.css">
     <title>Video chat || Chatting </title>
 </head>
 <body>
         <header>
             <!-- <span><img src="./images/logo.jpeg" alt="" width="25px" height="25px"/></span> -->
-            <a href="" class="logo"><i class="fa-solid fa-video"></i></a>
+            <a href="./index.html" class="logo"><i class="fa-solid fa-video"></i></a>
             <div class="title">
-                <span>Room 1 </span>
-                <span><img src="./images/icons-people.png" alt="" class="people" /> Room-name</span>
+                <span id="room-title">Room 1 </span>
+                <span id="room-name"><img src="./images/icons-people.png" alt="" class="people"/> </span>
             </div>
             <ul>
-                <li><a href="./index.html">Home</a></button> </li>
+                <!-- <li><a href="./index.html">Home</a></button> </li> -->
                 <li><button>Message</button>  </li> 
                 <li><button>participants</button> </li>
             </ul>
@@ -73,7 +74,7 @@
         </footer>
     
      <script src="agora-rtm-sdk-1.5.1.js"></script>
-    <script src="./script.js"></script> 
+    <script src="./script.js" defer></script> 
     
    
 </body>
