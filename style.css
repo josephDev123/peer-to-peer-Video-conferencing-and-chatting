@@ -18,7 +18,8 @@ header{
     border-bottom: 1px solid #E5E7EB;
     padding-bottom: 0.8rem;
     flex-wrap: wrap;
-    margin: 1rem 2rem 0rem 2rem;
+    width: 90%;
+    margin: 1rem auto 0rem auto;
 
 }
 
@@ -122,9 +123,9 @@ button{
     flex: 1 1 40%;
  }  
 
- .new-meeting-form-wrapper{
+ /* .new-meeting-form-wrapper{
     padding: 1rem;
- }
+ } */
 
  .new-meeting-form{
     display: flex;
@@ -142,9 +143,7 @@ button{
     /* width:40% */
  }
 
- .new-meeting-form button{
-    /* width: 30% */
- }
+
 
  .new-meeting-form input:focus{
     border: 1px solid #1A73E8;
