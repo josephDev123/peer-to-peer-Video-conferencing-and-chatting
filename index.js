@@ -53,5 +53,7 @@ function copyLink(link) {
       });
   }
   
-  
+window.onbeforeunload = (e)=>{
+    window.localStorage.removeItem('new-meeting')
+}
   

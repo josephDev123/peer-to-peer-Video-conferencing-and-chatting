@@ -93,6 +93,8 @@ header{
 
 .join-meeting input:focus{
     border: 1px solid #1A73E8;
+    outline: #806a8f;
+    color: black
  }
 
 
@@ -100,9 +102,6 @@ header{
     color: black;
  }
  
- .join-meeting input:focus{
-    outline: #806a8f;
- }
 
 button{
     color: #efebf1;

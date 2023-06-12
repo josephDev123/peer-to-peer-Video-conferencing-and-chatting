@@ -13,7 +13,6 @@ const room_name = document.getElementById('room-name');
 const room_title = document.getElementById('room-title')
 
 
-
 let peerConnection;
 let localStream;
 let remoteStream;
@@ -21,7 +20,6 @@ const APP_ID ='3eb5ac05c86c421d8264681b474261d1'
 
  let client;
  let channel;
-
 
 
 const uid = String(Math.floor(Math.random() * 100000))
@@ -43,7 +41,7 @@ const servers = {
 //loading state
 loading.innerHTML =`<div>Loading ..... </div>`
 
-// display the video title and name
+// extract the meeting credential from url to display the meeting title and name
     const currentUrl = decodeURI(window.location.href);
     const url = new URL(currentUrl);
     const searchParams = new URLSearchParams(url.search);
@@ -57,6 +55,8 @@ async function init(){
 try {
     client =  await AgoraRTM.createInstance(APP_ID);
     await client.login({uid, token});
+    const channel_name = getRoomCredential();
+    console.log(channel_name)
     channel = client.createChannel('main')
     await channel.join();
 
@@ -207,6 +207,16 @@ async function disableCamera(){
          videoTrack.enabled =true 
      }
  
+ }
+
+
+ function getRoomCredential(){
+    const url = window.location.href;
+    const parseUrl = new URL(url);
+    const params = new URLSearchParams(parseUrl.search)
+    const query = Object.fromEntries(params.entries());
+    console.log(query)
+    return query
  }
 
 
