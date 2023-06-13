@@ -46,8 +46,8 @@ loading.innerHTML =`<div>Loading ..... </div>`
     const url = new URL(currentUrl);
     const searchParams = new URLSearchParams(url.search);
     const query = Object.fromEntries(searchParams.entries());
-    room_name.textContent = `${query?.room_name}`;
-    room_title.textContent = `${query?.room_title}`;
+    room_name.textContent = `Meeting Room: ${query?.room_name}`;
+    room_title.textContent = `Meeting Topic: ${query?.room_title}`;
 
 
 
@@ -56,21 +56,26 @@ try {
     client =  await AgoraRTM.createInstance(APP_ID);
     await client.login({uid, token});
     const channel_name = getRoomCredential();
-    console.log(channel_name)
-    channel = client.createChannel('main')
-    await channel.join();
-
-    channel.on('MemberJoined', HandleUserJoined);
-    channel.on('MemberLeft', HandleUserLeft);
-    client.on('MessageFromPeer', HandleMessageFromPeer);
+    if (!channel_name.room_name) {
+       window.location.replace('index.html')
+    }else{
+        channel = client.createChannel(channel_name.room_name)
+        console.log(channel.channelId)
+        await channel.join();
     
-    localStream = await navigator.mediaDevices.getUserMedia(constraints);
-    videoElem_2.style.display ='none'
-    videoElem_1.setAttribute('class', 'remoteStream-bigThumbnail');
-    cto_btn.classList.remove('visibility-hidden');
-    // cto_btn.classList.add('visibility-show');
-    videoElem_1.srcObject=localStream;
-    loading.innerHTML = ''
+        channel.on('MemberJoined', HandleUserJoined);
+        channel.on('MemberLeft', HandleUserLeft);
+        client.on('MessageFromPeer', HandleMessageFromPeer);
+        
+        localStream = await navigator.mediaDevices.getUserMedia(constraints);
+        videoElem_2.style.display ='none'
+        videoElem_1.setAttribute('class', 'remoteStream-bigThumbnail');
+        cto_btn.classList.remove('visibility-hidden');
+        // cto_btn.classList.add('visibility-show');
+        videoElem_1.srcObject=localStream;
+        loading.innerHTML = ''
+    }
+   
 } catch (error) {
     localStream = await navigator.mediaDevices.getUserMedia(constraints);
     videoElem_2.style.display ='none'
@@ -215,7 +220,7 @@ async function disableCamera(){
     const parseUrl = new URL(url);
     const params = new URLSearchParams(parseUrl.search)
     const query = Object.fromEntries(params.entries());
-    console.log(query)
+    // console.log(query)
     return query
  }
 
@@ -223,6 +228,7 @@ async function disableCamera(){
 
 muteBtn.addEventListener('click', muteAudio)
 disableCameraBtn.addEventListener('click', disableCamera)
+
 init()
 
 
