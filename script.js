@@ -53,12 +53,14 @@ loading.innerHTML =`<div>Loading ..... </div>`
 
 async function init(){
 try {
-    client =  await AgoraRTM.createInstance(APP_ID);
-    await client.login({uid, token});
-    const channel_name = getRoomCredential();
-    if (!channel_name.room_name) {
+ const channel_name = getRoomCredential();
+     if (!channel_name.room_name) {
        window.location.replace('index.html')
     }else{
+    client =  await AgoraRTM.createInstance(APP_ID);
+    await client.login({uid, token});
+    
+   
         channel = client.createChannel(channel_name.room_name)
         console.log(channel.channelId)
         await channel.join();
