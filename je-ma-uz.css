@@ -19,8 +19,8 @@ header{
     padding-bottom: 0.8rem;
     flex-wrap: wrap;
     margin: 1rem 2rem 0rem 2rem;
-    position: sticky;
-    top: 0;
+    /* position: sticky;
+    top: 0; */
     z-index: 100;
 }
 
@@ -238,6 +238,14 @@ footer p:nth-child(2) a{
 
     header ul{
         display: none;
+    }
+
+    header .title{
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        gap: 0.7rem;
+        
     }
 
     .btn{
