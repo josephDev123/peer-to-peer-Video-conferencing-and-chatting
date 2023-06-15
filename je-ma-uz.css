@@ -235,7 +235,14 @@ footer p:nth-child(2) a{
 /* media query for video page */
 
 @media screen and (max-width: 425px) {
-
+    header{
+        display: flex;
+        align-items: baseline;
+        flex-direction: column;
+        /* position: sticky;
+        top: 0; */
+        /* z-index: 100; */
+    }
     header ul{
         display: none;
     }
