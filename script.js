@@ -10,9 +10,10 @@ const endBtn = document.getElementById('endCall');
 const disableCameraBtn = document.getElementById('stopCamera')
 const cto_btn = document.getElementById('cto-btn')
 const room_name = document.getElementById('room-name');
-const room_title = document.getElementById('room-title')
+const room_title = document.getElementById('room-title');
+let invited_to_call_elem = document.getElementById('invited_to_call_btn')
 
-
+let attendenceCount = 0
 let peerConnection;
 let localStream;
 let remoteStream;
@@ -76,6 +77,10 @@ try {
         // cto_btn.classList.add('visibility-show');
         videoElem_1.srcObject=localStream;
         loading.innerHTML = ''
+        attendenceCount = attendenceCount + 1
+        invited_to_call_elem.textContent = attendenceCount
+        // console.log(attendenceCount)
+
     }
    
 } catch (error) {
@@ -83,6 +88,8 @@ try {
     videoElem_2.style.display ='none'
     videoElem_1.setAttribute('class', 'remoteStream-bigThumbnail');
     videoElem_1.srcObject=localStream;
+    attendenceCount = attendenceCount + 1
+    invited_to_call_elem.textContent = attendenceCount
     loading.innerHTML = ''
     alert('error occur :'+ error.message+'\n'+ 'refresh browser')
 }
@@ -135,12 +142,10 @@ const createPeerConnection = async (memberId)=>{
         localStream = await navigator.mediaDevices.getUserMedia(constraints);
         videoElem_1.srcObject = localStream;
     }
-    
 
     localStream.getTracks().forEach(track=>{
         peerConnection.addTrack(track, localStream);
     });
-
    
     peerConnection.ontrack = (event)=>{
         console.log('stream', memberId)
@@ -148,7 +153,7 @@ const createPeerConnection = async (memberId)=>{
             remoteStream.addTrack(track)
             
     })
-    videoElem_2.style.display ='block'   
+    videoElem_2.style.display ='block'; 
     videoElem_2.setAttribute('class', 'remoteStream-bigThumbnail');
     videoElem_1.setAttribute('class', 'localStream-smallThumbnail') 
     }
