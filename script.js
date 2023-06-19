@@ -41,7 +41,9 @@ const servers = {
 
 
 // leave meeting or client 
+// leaving a browser
 endBtn.onclick = clientLogout
+window.onbeforeunload = clientLogout
 
 //loading state
 loading.innerHTML =`<div>Loading ..... </div>`
@@ -243,9 +245,15 @@ async function disableCamera(){
  }
 
 
- async function clientLogout(){
+
+
+ async function clientLogout(e){
+    e.preventDefault();
+    e.returnValue = '';
     console.log('log out');
     await channel.leave();
+    await client.logout();
+    window.location.href= '/'
  }
 
 
