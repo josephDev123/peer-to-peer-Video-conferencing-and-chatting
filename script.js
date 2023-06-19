@@ -22,7 +22,7 @@ const APP_ID ='3eb5ac05c86c421d8264681b474261d1'
  let client;
  let channel;
 
-
+ console.log(attendenceCount)
 const uid = String(Math.floor(Math.random() * 100000))
 const token =null
 
@@ -38,6 +38,10 @@ const servers = {
         }
     ]
 }
+
+
+// leave meeting or client 
+endBtn.onclick = clientLogout
 
 //loading state
 loading.innerHTML =`<div>Loading ..... </div>`
@@ -98,6 +102,8 @@ try {
 
 function HandleUserLeft(memberId){
     console.log('User left:', memberId);
+    attendenceCount = attendenceCount - 1
+    invited_to_call_elem.textContent = attendenceCount
 }
 
 
@@ -128,7 +134,11 @@ function HandleUserLeft(memberId){
 
 async function HandleUserJoined(memberId){
     console.log('User joined:', memberId);
+    
+    attendenceCount = attendenceCount + 1
+    invited_to_call_elem.textContent = attendenceCount
     createOffer(memberId) 
+    
 }
  
 
@@ -151,6 +161,7 @@ const createPeerConnection = async (memberId)=>{
         console.log('stream', memberId)
         event.streams[0].getTracks().forEach((track) => {
             remoteStream.addTrack(track)
+            attendenceCount = attendenceCount + 1     
             
     })
     videoElem_2.style.display ='block'; 
@@ -231,6 +242,11 @@ async function disableCamera(){
     return query
  }
 
+
+ async function clientLogout(){
+    console.log('log out');
+    await channel.leave();
+ }
 
 
 muteBtn.addEventListener('click', muteAudio)

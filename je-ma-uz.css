@@ -24,9 +24,11 @@ header{
     z-index: 100;
 }
 
+
 .logo{
     color: #00A389;
 }
+
 
 header ul{
     list-style: none;
@@ -63,7 +65,7 @@ ul li button{
 }
 
 ul li button:hover{
-  cursor: pointer;
+  cursor:not-allowed;
 }
 
 
