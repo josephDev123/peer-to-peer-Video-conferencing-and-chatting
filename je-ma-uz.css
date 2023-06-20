@@ -120,15 +120,19 @@ ul li button:hover{
     border-radius: 0.5rem;
 }
 
+ /* .user_to_call_btn:hover{
+    cursor: not-allowed;
+} */
+
 
 .add_to_call_action img{
     font-size: 0.7rem;
     border-radius: 0.5rem;
 }
 
-.add_to_call_action button:hover{
-    cursor: pointer;
-}
+.add_to_call_action :hover{
+    cursor: not-allowed;
+} 
 
 .streams_wrapper{
     position: relative;
@@ -212,7 +216,7 @@ ul li button:hover{
      padding: 0.4rem;
      border-top-right-radius: 0.5rem;
      border-bottom-left-radius: 0.5rem;
-     color: #FFFFFF;
+     /* color: #FFFFFF; */
      font-size: 0.8rem;
 }
 
