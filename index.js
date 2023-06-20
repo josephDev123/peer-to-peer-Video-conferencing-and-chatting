@@ -54,8 +54,8 @@ function copyLink(link) {
   }
   
 window.onbeforeunload = (e)=>{
-    e.preventDefault();
-    e.returnValue = ''
+    // e.preventDefault();
+    // e.returnValue = ''
     window.localStorage.removeItem('new-meeting')
     
 }

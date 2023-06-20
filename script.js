@@ -42,8 +42,8 @@ const servers = {
 
 // leave meeting or client 
 // leaving a browser
-endBtn.onclick = clientLogout
-window.onbeforeunload = clientLogout
+endBtn.onclick = clientLeaveChannelAndLogout
+window.onbeforeunload = clientLeaveChannelAndLogout
 
 //loading state
 loading.innerHTML =`<div>Loading ..... </div>`
@@ -85,7 +85,6 @@ try {
         loading.innerHTML = ''
         attendenceCount = attendenceCount + 1
         invited_to_call_elem.textContent = attendenceCount
-        // console.log(attendenceCount)
 
     }
    
@@ -97,7 +96,7 @@ try {
     attendenceCount = attendenceCount + 1
     invited_to_call_elem.textContent = attendenceCount
     loading.innerHTML = ''
-    alert('error occur :'+ error.message+'\n'+ 'refresh browser')
+    alert('error occur :'+ error.message+'\n'+ 'Click "Ok" to resolve the issue')
 }
   
 }
@@ -247,7 +246,7 @@ async function disableCamera(){
 
 
 
- async function clientLogout(e){
+ async function clientLeaveChannelAndLogout(e){
     e.preventDefault();
     e.returnValue = '';
     console.log('log out');
