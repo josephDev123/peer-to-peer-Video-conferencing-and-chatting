@@ -45,7 +45,7 @@ const servers = {
 endBtn.onclick = clientLeaveChannelAndLogout
 window.onbeforeunload = clientLeaveChannelAndLogout
 
-//loading state
+//loading state of the video before commiting to the dom
 loading.innerHTML =`<div>Loading ..... </div>`
 
 // extract the meeting credential from url to display the meeting title and name
@@ -247,8 +247,8 @@ async function disableCamera(){
 
 
  async function clientLeaveChannelAndLogout(e){
-    e.preventDefault();
-    e.returnValue = '';
+    // e.preventDefault();
+    // e.returnValue = '';
     console.log('log out');
     await channel.leave();
     await client.logout();
